@@ -82,6 +82,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demowcf.Business.Logic\Demowcf.Business.Logic.csproj">
+      <Project>{4EA62BA5-2708-4FB1-9EC8-4011FA7351EA}</Project>
+      <Name>Demowcf.Business.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demowcf.Common.Logic\Demowcf.Common.Logic.csproj">
+      <Project>{071FB111-0A54-4A40-9C5D-0CD2FE6A30D2}</Project>
+      <Name>Demowcf.Common.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

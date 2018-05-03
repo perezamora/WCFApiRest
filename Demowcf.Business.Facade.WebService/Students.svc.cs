@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Demowcf.Business.Logic;
+using Demowcf.Common.Logic.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,76 +13,36 @@ namespace Demowcf.Business.Facade.WebService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Students.svc or Students.svc.cs at the Solution Explorer and start debugging.
     public class Students : IStudents
     {
-
-        private List<Student> repo;
+        private readonly IDemowcfBLService _demowcfBLService;
 
         public Students()
         {
-            repo = new List<Student>
-            {
-                new Student() { Id = 1, Name = "Peter", Surname = "Parker" },
-                new Student() { Id = 2, Name = "Lobezno", Surname = "su" },
-                new Student() { Id = 3, Name = "Tormenta", Surname = "de verano" },
-                new Student() { Id = 4, Name = "Spider", Surname = "man" }
-            };
+            _demowcfBLService = new DemowcfBLService();
         }
 
         public Student Create(Student student)
         {
-            if (student != null)
-            {
-                if (student.Id == 0)
-                {
-                    int maxCliente = repo.Max(c => c.Id);
-                    student.Id = maxCliente + 1;
-                }
-                repo.Add(student);
-            }
-            return student;
+            return _demowcfBLService.Create(student);
         }
 
         public void Delete(int idStudent)
         {
-            if (idStudent > 0)
-            {
-                Student cli = ObtenerStudent(idStudent);
-                if (cli != null)
-                {
-                    repo.Remove(cli);
-                }
-            }
+            _demowcfBLService.Delete(idStudent);
         }
 
         public Student Get(string idStudent)
         {
-            int.TryParse(idStudent, out int id);
-            return ObtenerStudent(id);
+            return _demowcfBLService.Get(idStudent);
         }
 
         public List<Student> GetAll()
         {
-            return repo;
+            return _demowcfBLService.GetAll();
         }
 
         public Student Update(Student student)
         {
-            Student cli = null;
-            if (student != null)
-            {
-                cli = ObtenerStudent(student.Id);
-                if (cli != null)
-                {
-                    cli.Name = student.Name;
-                    cli.Surname = student.Surname;
-                }
-            }
-            return cli;
-        }
-
-        private Student ObtenerStudent(int idStudent)
-        {
-            Student cli = repo.Where(c => c.Id == idStudent).Select(c => c).SingleOrDefault();
-            return cli;
+            return _demowcfBLService.Update(student);
         }
 
     }
