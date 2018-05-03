@@ -16,7 +16,7 @@ namespace Demowcf.Common.Logic.Model
             var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
 
-        public DbSet<Student> students { get; set; }
+        public DbSet<Student> Students { get; set; }
 
     }
 }
