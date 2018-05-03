@@ -15,9 +15,9 @@ namespace Demowcf.Business.Facade.WebService
     {
         private readonly IDemowcfBLService _demowcfBLService;
 
-        public Students()
+        public Students(IDemowcfBLService demowcfBLService)
         {
-            _demowcfBLService = new DemowcfBLService();
+            _demowcfBLService = demowcfBLService;
         }
 
         public Student Create(Student student)

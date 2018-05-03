@@ -12,9 +12,9 @@ namespace Demowcf.Business.Logic
     {
         private readonly IStudentRepository<Student> _studentRepository;
 
-        public DemowcfBLService()
+        public DemowcfBLService(IStudentRepository<Student> studentRepository)
         {
-            _studentRepository = new StudentRepository<Student>();
+            _studentRepository = studentRepository;
         }
 
         public Student Create(Student student)
